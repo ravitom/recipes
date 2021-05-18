@@ -1,8 +1,12 @@
 <div class="row">
   <div class="col-md-5">
-    <app-recipe-list></app-recipe-list>
+    <app-recipe-list (receivedRecipe)=onReceivedRecipe($event)></app-recipe-list>
   </div>
   <div class="col-md-7">
-    <app-recipe-detail></app-recipe-detail>
+    <app-recipe-detail *ngIf="receivedRecipe;else infoText" [recivedRecipe]="receivedRecipe"></app-recipe-detail>
+    <ng-template #infoText>
+      Please click a Reipe
+    </ng-template>
+
   </div>
 </div>
